@@ -1,2 +1,7 @@
-# visionhub
-Hub for Grow a Garden, This Hub is New, Will Have Updates Soon. 
+# 🌱 Vision Hub [Grow a Garden
+Introducing a Grow a Garden Script for PC/Mobile, Fully Anti Ban and New.
+Features: 
+
+- Teleports
+- AutoFarm
+- And More!

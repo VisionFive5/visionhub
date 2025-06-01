@@ -31,7 +31,7 @@ local Window = Rayfield:CreateWindow({
       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"vision","hub"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"vision","hub","goat"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 
@@ -156,8 +156,28 @@ local Button = Tab3:CreateButton({
 })
 
 local Button = Tab:CreateButton({
-   Name = "Old Servers",
+   Name = "Dupe Item",
    Callback = function()
-   
+   local player = game.Players.LocalPlayer
+local backpack = player.Backpack
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Função para duplicar o item
+local function duplicateItem()
+    while true do
+        local currentTool = player.Character:FindFirstChildOfClass("Tool") -- Encontra a ferramenta que o jogador está segurando.
+
+        if currentTool then
+            local clonedTool = currentTool:Clone() -- Clona a ferramenta.
+            clonedTool.Parent = backpack -- Adiciona a ferramenta clonada de volta à mochila.
+        end
+        
+        wait(1) -- Espera 1 segundo antes de tentar duplicar novamente
+    end
+end
+
+-- Inicia a duplicação
+duplicateItem()
+
    end,
 })

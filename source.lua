@@ -102,7 +102,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
    end,
 })
 
-local Button = Tab:CreateButton({
+local Button = Tab2:CreateButton({
    Name = "Auto Sell",
    Callback = function()
    local Players = game:GetService("Players")
@@ -155,7 +155,7 @@ local Button = Tab3:CreateButton({
    end,
 })
 
-local Button = Tab:CreateButton({
+local Button = Tab3:CreateButton({
    Name = "Dupe Item",
    Callback = function()
    local player = game.Players.LocalPlayer

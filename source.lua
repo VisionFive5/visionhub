@@ -58,13 +58,31 @@ local Button = Tab:CreateButton({
 })
 
 local Button = Tab:CreateButton({
-   Name = "TP to Honey Event",
+   Name = "TP to Queen Bee",
    Callback = function()
-   -- The function that takes place when the button is pressed
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+    -99.0080948, 4.08001089, -16.8739891,
+     0.990561068, -6.72249953e-08, -0.137072265,
+     6.56081411e-08, 1, -1.63134555e-08,
+     0.137072265, 7.16641724e-09, 0.990561068
+         )
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "TP to HoneyCombpressor",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+    -109.902847, 4.40001345, -16.9929142,
+    -0.707134247, 0, -0.707079291,
+     0, 1, 0,
+     0.707079291, 0, -0.707134247
+         )
    end,
 })
 
 local Tab2 = Window:CreateTab("Auto Farm", 4483362458) -- Title, Image
+local Label = Tab:CreateLabel("Manual Farm", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 
 local Button = Tab2:CreateButton({
    Name = "Anti Afk",
@@ -85,6 +103,8 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 })
 
 local Tab3 = Window:CreateTab("Misc", 4483362458) -- Title, Image
+local Label = Tab:CreateLabel("Remote Event", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+
 local Button = Tab3:CreateButton({
    Name = "Get All Fruits / Pets / Seeds",
    Callback = function()
@@ -100,6 +120,55 @@ end
 local Button = Tab3:CreateButton({
    Name = "Get Admin Cmds",
    Callback = function()
-   game.Players.LocalPlayer:Kick("XD")
+   game.Players.LocalPlayer:Kick("Soon")
+   end,
+})
+
+local Button = Tab3:CreateButton({
+   Name = "Get Candy Blossom",
+   Callback = function()
+   local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ServerStorage = game:GetService("ServerStorage")
+local StarterPack = game:GetService("StarterPack")
+local LocalPlayer = Players.LocalPlayer
+
+local searchAreas = {
+    workspace,
+    ReplicatedStorage,
+    ServerStorage,
+    StarterPack
+}
+
+-- Adiciona personagens e mochilas dos jogadores à lista de busca
+for _, player in pairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        if player.Character then
+            table.insert(searchAreas, player.Character)
+        end
+        local backpack = player:FindFirstChild("Backpack")
+        if backpack then
+            table.insert(searchAreas, backpack)
+        end
+    end
+end
+
+local function findItemByName(name)
+    for _, area in pairs(searchAreas) do
+        for _, obj in pairs(area:GetDescendants()) do
+            if obj.Name == name and obj:IsA("Tool") then
+                return obj
+            end
+        end
+    end
+    return nil
+end
+
+local itemName = "Candy Blossom [X1]"
+local foundItem = findItemByName(itemName)
+
+if foundItem then
+    foundItem.Parent = LocalPlayer:WaitForChild("Backpack")
+         end
    end,
 })

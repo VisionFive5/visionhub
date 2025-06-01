@@ -82,7 +82,7 @@ local Button = Tab:CreateButton({
 })
 
 local Tab2 = Window:CreateTab("Auto Farm", 4483362458) -- Title, Image
-local Label = Tab:CreateLabel("Manual Farm", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+local Label = Tab2:CreateLabel("Manual Farm", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 
 local Button = Tab2:CreateButton({
    Name = "Anti Afk",
@@ -103,7 +103,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 })
 
 local Tab3 = Window:CreateTab("Misc", 4483362458) -- Title, Image
-local Label = Tab:CreateLabel("Remote Event", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+local Label = Tab3:CreateLabel("Remote Event", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 
 local Button = Tab3:CreateButton({
    Name = "Get All Fruits / Pets / Seeds",

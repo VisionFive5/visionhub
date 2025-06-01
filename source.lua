@@ -43,6 +43,8 @@ Rayfield:Notify({
    Image = 4483362458,
 })
 
+local Label = Tab:CreateLabel("Teleports", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+
 local Button = Tab:CreateButton({
    Name = "TP to Gear Shop",
    Callback = function()
@@ -52,6 +54,13 @@ local Button = Tab:CreateButton({
      4.23073168e-08, 1, -5.31975033e-08,
     -0.995224774, 4.72978847e-08, 0.0976097211
 )
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "TP to Honey Event",
+   Callback = function()
+   -- The function that takes place when the button is pressed
    end,
 })
 

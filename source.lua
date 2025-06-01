@@ -102,11 +102,42 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
    end,
 })
 
+local Button = Tab:CreateButton({
+   Name = "Auto Sell",
+   Callback = function()
+   local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+local originalCFrame = hrp.CFrame
+
+hrp.CFrame = CFrame.new(
+    91.6856689, 2.99960613, 0.405863285,
+     0, 0, 1,
+     0, 1, 0,
+    -1, 0, 0
+)
+
+local remote = ReplicatedStorage:WaitForChild("GameEvents"):WaitForChild("Sell_Inventory")
+
+remote:FireServer()
+task.wait(0.2)
+remote:FireServer()
+
+task.wait(3)
+
+hrp.CFrame = originalCFrame
+   end,
+})
+
 local Tab3 = Window:CreateTab("Misc", 4483362458) -- Title, Image
-local Label = Tab3:CreateLabel("Remote Event", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+local Label = Tab3:CreateLabel("Others", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
 
 local Button = Tab3:CreateButton({
-   Name = "Get All Fruits / Pets / Seeds",
+   Name = "Steal All Seeds in Server [Serversided]",
    Callback = function()
    for i,v in pairs (game.Players:GetChildren()) do
 wait()
@@ -118,57 +149,15 @@ end
 })
 
 local Button = Tab3:CreateButton({
-   Name = "Get Admin Cmds",
+   Name = "Admin Commands",
    Callback = function()
-   game.Players.LocalPlayer:Kick("Soon")
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua"))()
    end,
 })
 
-local Button = Tab3:CreateButton({
-   Name = "Get Candy Blossom",
+local Button = Tab:CreateButton({
+   Name = "Old Servers",
    Callback = function()
-   local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerStorage = game:GetService("ServerStorage")
-local StarterPack = game:GetService("StarterPack")
-local LocalPlayer = Players.LocalPlayer
-
-local searchAreas = {
-    workspace,
-    ReplicatedStorage,
-    ServerStorage,
-    StarterPack
-}
-
--- Adiciona personagens e mochilas dos jogadores à lista de busca
-for _, player in pairs(Players:GetPlayers()) do
-    if player ~= LocalPlayer then
-        if player.Character then
-            table.insert(searchAreas, player.Character)
-        end
-        local backpack = player:FindFirstChild("Backpack")
-        if backpack then
-            table.insert(searchAreas, backpack)
-        end
-    end
-end
-
-local function findItemByName(name)
-    for _, area in pairs(searchAreas) do
-        for _, obj in pairs(area:GetDescendants()) do
-            if obj.Name == name and obj:IsA("Tool") then
-                return obj
-            end
-        end
-    end
-    return nil
-end
-
-local itemName = "Candy Blossom [X1]"
-local foundItem = findItemByName(itemName)
-
-if foundItem then
-    foundItem.Parent = LocalPlayer:WaitForChild("Backpack")
-         end
+   
    end,
 })

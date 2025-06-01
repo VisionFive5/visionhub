@@ -57,7 +57,7 @@ local Button = Tab:CreateButton({
 
 local Tab2 = Window:CreateTab("Auto Farm", 4483362458) -- Title, Image
 
-local Button = Tab:CreateButton({
+local Button = Tab2:CreateButton({
    Name = "Anti Afk",
    Callback = function()
    local VirtualUser = game:GetService('VirtualUser')
@@ -75,15 +75,8 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
    end,
 })
 
-local Button = Tab:CreateButton({
-   Name = "Button Example",
-   Callback = function()
-   -- The function that takes place when the button is pressed
-   end,
-})
-
 local Tab3 = Window:CreateTab("Misc", 4483362458) -- Title, Image
-local Button = Tab:CreateButton({
+local Button = Tab3:CreateButton({
    Name = "Get All Fruits / Pets / Seeds",
    Callback = function()
    for i,v in pairs (game.Players:GetChildren()) do
@@ -92,5 +85,12 @@ for i,b in pairs (v.Backpack:GetChildren()) do
 b.Parent = game.Players.LocalPlayer.Backpack
 end
 end
+   end,
+})
+
+local Button = Tab3:CreateButton({
+   Name = "Get Admin Cmds",
+   Callback = function()
+   game.Players.LocalPlayer:Kick("XD")
    end,
 })
